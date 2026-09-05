@@ -1,8 +1,5 @@
 # Security Checklist
 
-> Decided. Split into "always required, no judgment call" vs. "context-dependent,
-> use judgment and document the decision."
-
 ## Always required (no exceptions without a written reason)
 
 - [ ] `brakeman` runs in CI, zero unreviewed warnings at merge (each warning

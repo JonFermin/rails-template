@@ -1,9 +1,5 @@
 # Testing Philosophy
 
-> Decided. Governs what gets tested, at what level, and what's explicitly
-> out of scope — the goal is confidence per line of test code, not coverage
-> percentage for its own sake.
-
 ## Guiding principle
 
 Test *behavior*, not *implementation*. A test should survive a refactor that

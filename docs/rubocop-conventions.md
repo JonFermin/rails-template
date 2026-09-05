@@ -1,8 +1,5 @@
 # Rubocop Conventions
 
-> Decided. These thresholds and choices are final for this template — don't
-> re-litigate them per PR. Adjust only via a documented change to this file.
-
 ## Philosophy
 
 Rubocop enforces *legibility at a glance*, not cleverness. A reviewer (human or

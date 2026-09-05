@@ -1,9 +1,5 @@
 # Style Guide — Basecamp / ONCE Corpus
 
-> Decided. Patterns observed across Basecamp's open-source Rails apps
-> (once-campfire, Fizzy, Kamal-deployed small apps). Illustrative snippets
-> below are written fresh to demonstrate the pattern, not copied from source.
-
 ## Core stance
 
 Basecamp's house style optimizes for **a new engineer reading the file cold**,
@@ -11,6 +7,10 @@ not for maximum reuse or maximum abstraction. The recurring theme: push logic
 *down* into small, well-named objects (models, concerns, jobs) rather than
 *up* into service-object or interactor frameworks. Fewer layers to trace
 through when debugging.
+
+The patterns below are observed across Basecamp's open-source Rails apps
+(once-campfire, Fizzy, Kamal-deployed small apps); the snippets are written
+fresh to demonstrate each pattern, not copied from source.
 
 ## Patterns to lift
 
