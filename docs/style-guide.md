@@ -47,8 +47,8 @@ end
 ### 3. Minimal service-object machinery
 No `Interactor`/`dry-monads`/base-class-per-action frameworks. When logic
 needs to live outside a model, it's a plain object with a single public
-method: **`#call`**, project-wide (see Naming Conventions). No imposed base
-class, no `ApplicationService`.
+method — see [naming-conventions.md](naming-conventions.md) for what that
+method is named. No imposed base class, no `ApplicationService`.
 
 ```ruby
 class RoomInvitation
