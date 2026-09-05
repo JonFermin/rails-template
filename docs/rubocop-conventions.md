@@ -33,6 +33,12 @@ for one directory creates a rule an agent has to remember applies only in one
 place — if service objects are getting long, that's already a signal from
 `AbcSize`/`CyclomaticComplexity`, not a reason for a bespoke threshold.
 
+This applies to `app/models/**/*` too — models are **not** excluded from
+`ClassLength`. A model pushing past the cap is the signal to pull related
+behavior into a concern named for the capability it provides, which is the
+answer the style guide already gives for fat models. Excluding models would
+remove exactly the pressure that produces that decomposition.
+
 ## When a file *should* exceed a limit
 
 Rubocop excludes are a design decision, not a shortcut. Acceptable reasons to
@@ -78,8 +84,6 @@ Metrics/MethodLength:
 
 Metrics/ClassLength:
   Max: 150
-  Exclude:
-    - 'app/models/**/*' # revisit — Rails models grow; consider concerns instead
 
 Layout/LineLength:
   Max: 120
