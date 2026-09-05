@@ -1,0 +1,27 @@
+<% content_for :title, @child.name %>
+<%# Subscribes this page to the child's refresh stream; only rendered after ChildPolicy#show? passed %>
+<%= turbo_stream_from @child %>
+
+<h1><%= @child.name %></h1>
+<p><%= @child.classroom.name %> · <%= @child.checked_in? ? "Checked in" : "Not checked in" %></p>
+
+<% if policy(@child).check_in? %>
+  <div class="actions">
+    <% if @child.checked_in? %>
+      <%= button_to "Check out", child_check_out_path(@child) %>
+    <% else %>
+      <%= button_to "Check in", child_check_in_path(@child) %>
+    <% end %>
+    <%= link_to "New daily report", new_child_daily_report_path(@child) %>
+  </div>
+<% end %>
+
+<h2>Daily reports</h2>
+<ul id="daily_reports">
+  <% @daily_reports.each do |daily_report| %>
+    <li id="<%= dom_id(daily_report) %>">
+      <%= link_to daily_report.reported_on.to_fs(:long), daily_report %> — <%= daily_report.mood %>
+      <%= render daily_report.activity_summary if daily_report.summarized? %>
+    </li>
+  <% end %>
+</ul>

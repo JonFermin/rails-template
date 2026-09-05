@@ -1,0 +1,28 @@
+# Hand-written from a real structured-output response shape; all content is synthetic. No real child data here.
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-opus-5","max_tokens":600,"system":"<system prompt>","messages":[{"role":"user","content":"Write the recap for this report:\n{\"mood\":\"happy\",\"nap_minutes\":90,\"meals\":\"Ate most of lunch, all of snack.\"}"}],"output_config":{"format":{"type":"json_schema","schema":{"type":"object","properties":{"summary":{"type":"string"},"highlights":{"type":"array","items":{"type":"string"}}},"required":["summary","highlights"],"additionalProperties":false}}}}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<ANTHROPIC_API_KEY>"
+      Anthropic-Version:
+      - '2023-06-01'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"id":"msg_01SyntheticDailySummary","type":"message","role":"assistant","model":"claude-opus-5","content":[{"type":"text","text":"{\"summary\":\"It was a happy day. A solid 90-minute nap and a good appetite at lunch kept spirits high right through snack time.\",\"highlights\":[\"Napped 90 minutes\",\"Ate most of lunch\",\"Finished snack\"]}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":142,"output_tokens":61,"cache_creation_input_tokens":0,"cache_read_input_tokens":0}}'
+  recorded_at: Fri, 04 Sep 2026 20:00:00 GMT
+recorded_with: VCR 6.4.0

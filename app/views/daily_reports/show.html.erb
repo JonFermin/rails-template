@@ -1,0 +1,30 @@
+<% content_for :title, "Daily report" %>
+<%= turbo_stream_from @daily_report.child %>
+
+<p><%= link_to @daily_report.child.name, @daily_report.child %></p>
+<h1>Daily report for <%= @daily_report.reported_on.to_fs(:long) %></h1>
+
+<dl>
+  <dt>Mood</dt><dd><%= @daily_report.mood %></dd>
+  <dt>Nap</dt><dd><%= @daily_report.nap_minutes %> minutes</dd>
+  <dt>Meals</dt><dd><%= @daily_report.meals %></dd>
+  <dt>Notes</dt><dd><%= @daily_report.notes %></dd>
+</dl>
+
+<% if @daily_report.photos.attached? %>
+  <div class="photos">
+    <% @daily_report.photos.each do |photo| %>
+      <%= image_tag photo.variant(resize_to_limit: [ 400, 400 ]) %>
+    <% end %>
+  </div>
+<% end %>
+
+<section id="activity_summary">
+  <h2>Summary</h2>
+  <% if @daily_report.summarized? %>
+    <%= render @daily_report.activity_summary %>
+  <% else %>
+    <p>No summary yet.</p>
+    <%= button_to "Generate summary", daily_report_activity_summary_path(@daily_report) %>
+  <% end %>
+</section>

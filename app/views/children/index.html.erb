@@ -1,0 +1,10 @@
+<% content_for :title, "Children" %>
+<h1>Children</h1>
+
+<ul id="children">
+  <% @children.each do |child| %>
+    <li id="<%= dom_id(child) %>">
+      <%= link_to child.name, child %> — <%= child.classroom.name %>
+    </li>
+  <% end %>
+</ul>

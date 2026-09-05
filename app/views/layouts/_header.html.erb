@@ -1,0 +1,5 @@
+<header>
+  <%= link_to "Children", children_path %>
+  <span><%= Current.user.name %> (<%= Current.user.class.model_name.human %>)</span>
+  <%= button_to "Sign out", session_path, method: :delete %>
+</header>
