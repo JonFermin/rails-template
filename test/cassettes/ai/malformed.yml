@@ -1,0 +1,26 @@
+# Synthetic: a response that is valid JSON but violates the schema (missing "highlights", extra key).
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.anthropic.com/v1/messages
+    body:
+      encoding: UTF-8
+      string: '{"model":"claude-opus-5","max_tokens":600,"system":"<system prompt>","messages":[{"role":"user","content":"<prompt>"}]}'
+    headers:
+      Content-Type:
+      - application/json
+      X-Api-Key:
+      - "<ANTHROPIC_API_KEY>"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: '{"id":"msg_01SyntheticMalformed","type":"message","role":"assistant","model":"claude-opus-5","content":[{"type":"text","text":"{\"summary\":\"A fine day.\",\"unexpected\":\"<script>alert(1)</script>\"}"}],"stop_reason":"end_turn","stop_sequence":null,"usage":{"input_tokens":142,"output_tokens":20}}'
+  recorded_at: Fri, 04 Sep 2026 20:00:00 GMT
+recorded_with: VCR 6.4.0

@@ -1,0 +1,20 @@
+<% content_for :title, "New daily report" %>
+<h1>New daily report for <%= @pet.name %></h1>
+
+<%= form_with model: [ @pet, @daily_report ] do |form| %>
+  <% if @daily_report.errors.any? %>
+    <ul class="errors">
+      <% @daily_report.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p><%= form.label :reported_on %> <%= form.date_field :reported_on %></p>
+  <p><%= form.label :mood %> <%= form.select :mood, DailyReport::MOODS %></p>
+  <p><%= form.label :nap_minutes %> <%= form.number_field :nap_minutes, min: 0 %></p>
+  <p><%= form.label :meals %> <%= form.text_area :meals %></p>
+  <p><%= form.label :notes %> <%= form.text_area :notes %></p>
+  <p><%= form.label :photos %> <%= form.file_field :photos, multiple: true, accept: DailyReport::PHOTO_CONTENT_TYPES.join(",") %></p>
+  <p><%= form.submit "Save report" %></p>
+<% end %>

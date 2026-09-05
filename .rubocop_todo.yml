@@ -1,0 +1,18 @@
+# RuboCop todo list — temporary, owned exceptions to .rubocop.yml.
+#
+# This file is intentionally empty. It exists so the mechanism is in place before anyone needs it.
+#
+# Adding an entry (see docs/rubocop-conventions.md → "When a file should exceed a limit" and "CI gate"):
+#   1. Prefer fixing the offense. Only add an entry when the fix is genuinely out of scope for your change.
+#   2. Scope the entry to the exact files, never to a whole cop or directory.
+#   3. Every entry carries an owner and a removal target, e.g.
+#
+#        # Owner: @jane — remove by 2026-12-31 when the billing extraction lands
+#        Metrics/ClassLength:
+#          Exclude:
+#            - 'app/models/invoice.rb'
+#
+#   4. Never regenerate this file with `rubocop --auto-gen-config`; that hides offenses instead of owning them.
+#
+# Reviewing: this file is reviewed quarterly. Entries past their removal target are fixed or re-justified, not
+# silently extended.

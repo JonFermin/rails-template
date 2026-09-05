@@ -1,0 +1,83 @@
+# House style: rubocop-rails-omakase as the base, layered with the overrides below.
+# Every value here mirrors the table in docs/rubocop-conventions.md — if they ever disagree, this file is wrong.
+#
+# Mechanics: the omakase base ships as a config file inside its gem (hence `inherit_gem`), and it already declares
+# the rubocop-rails and rubocop-performance plugins; they are repeated here so this file reads as the full picture.
+inherit_gem:
+  rubocop-rails-omakase: rubocop.yml
+
+plugins:
+  - rubocop-rails
+  - rubocop-performance
+
+# Temporary, owned exceptions live in the todo file (see the instructions at the top of it).
+inherit_from:
+  - .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+  TargetRubyVersion: 3.4
+  Exclude:
+    - 'db/schema.rb'
+    - 'db/*_schema.rb'
+    - 'bin/*'
+    - 'vendor/**/*'
+
+# --- Metrics (omakase disables the department; each limit is switched on individually) --------------------------
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 12
+
+Metrics/ClassLength:
+  Enabled: true
+  Max: 150
+
+Metrics/ModuleLength:
+  Enabled: true
+  Max: 150
+
+Metrics/AbcSize:
+  Enabled: true
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Enabled: true
+  Max: 7
+
+Metrics/ParameterLists:
+  Enabled: true
+  Max: 4
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - 'test/**/*'
+    - 'config/routes.rb'
+    - 'config/environments/*'
+
+Layout/LineLength:
+  Enabled: true
+  Max: 120
+
+# --- House conventions beyond the metrics ------------------------------------------------------------------------
+
+# No `rescue Exception` — it swallows signals and syntax errors along with the error you meant.
+Lint/RescueException:
+  Enabled: true
+
+# No empty rescue bodies; a swallowed error is a silent failure.
+Lint/SuppressedException:
+  Enabled: true
+
+# Bans update_attribute, update_column(s), update_all, touch, toggle! and friends — validations are the contract.
+Rails/SkipsModelValidations:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+# Prefer guard clauses to nested conditionals.
+Style/GuardClause:
+  Enabled: true

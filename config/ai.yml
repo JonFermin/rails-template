@@ -1,0 +1,10 @@
+# Model settings, loaded via config_for(:ai) into Rails.configuration.ai.
+# The provider itself is wired in app/services/ai.rb; the API key lives in credentials (anthropic.api_key) or
+# ANTHROPIC_API_KEY — never here.
+shared:
+  model: claude-opus-5
+  # Cost cap: total completions per rolling day across the whole app. Separate from per-user request rate limits.
+  daily_call_limit: 500
+
+test:
+  daily_call_limit: 5

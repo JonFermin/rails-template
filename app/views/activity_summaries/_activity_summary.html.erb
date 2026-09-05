@@ -1,0 +1,9 @@
+<%# Model output is rendered through the default escaping like any other text — never raw / html_safe %>
+<div id="<%= dom_id(activity_summary) %>" class="activity-summary">
+  <p><%= activity_summary.body %></p>
+  <ul>
+    <% activity_summary.highlights.each do |highlight| %>
+      <li><%= highlight %></li>
+    <% end %>
+  </ul>
+</div>

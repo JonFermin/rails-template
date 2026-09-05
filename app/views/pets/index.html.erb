@@ -1,0 +1,10 @@
+<% content_for :title, "Pets" %>
+<h1>Pets</h1>
+
+<ul id="pets">
+  <% @pets.each do |pet| %>
+    <li id="<%= dom_id(pet) %>">
+      <%= link_to pet.name, pet %> — <%= pet.location.name %>
+    </li>
+  <% end %>
+</ul>
