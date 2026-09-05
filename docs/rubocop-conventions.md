@@ -15,10 +15,10 @@ it for Shopify or Standard without a documented reason in a PR description.
 
 | Metric | Default | This project | Rationale |
 |---|---|---|---|
-| `Metrics/MethodLength` | 10 lines | 10–12 | A method should do one thing; if you can't see the whole thing without scrolling, it's doing two |
-| `Metrics/ClassLength` | 100 lines | 150–200 | Rails models/controllers legitimately grow; extend rather than raise indefinitely |
-| `Metrics/ModuleLength` | 100 lines | same as class | |
-| `Metrics/AbcSize` | 17 | 17–20 | Catches methods that are *short but doing too much* (branches + assignments + calls) |
+| `Metrics/MethodLength` | 10 lines | 12 | A method should do one thing; if you can't see the whole thing without scrolling, it's doing two |
+| `Metrics/ClassLength` | 100 lines | 150 | Rails models/controllers legitimately grow; extend rather than raise indefinitely |
+| `Metrics/ModuleLength` | 100 lines | 150 | Same reasoning as `ClassLength` |
+| `Metrics/AbcSize` | 17 | 20 | Catches methods that are *short but doing too much* (branches + assignments + calls) |
 | `Metrics/CyclomaticComplexity` | 7 | 7 | Hard cap — high complexity is a correctness risk, not just a style one |
 | `Metrics/BlockLength` | 25 | exclude `test/**/*`, routes, config | Tests and DSLs (routes, long `setup` blocks) legitimately run long |
 | `Layout/LineLength` | 120 | 120 | Match your widest comfortable split-screen editor width |
@@ -81,9 +81,31 @@ Metrics/MethodLength:
 Metrics/ClassLength:
   Max: 150
 
+Metrics/ModuleLength:
+  Max: 150
+
+Metrics/AbcSize:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 7
+
+Metrics/ParameterLists:
+  Max: 4
+
+Metrics/BlockLength:
+  Exclude:
+    - 'test/**/*'
+    - 'config/routes.rb'
+    - 'config/environments/*'
+
 Layout/LineLength:
   Max: 120
 ```
+
+Every metric in the table above appears here with exactly one value. The
+table documents what the config enforces — if they disagree, the config is
+wrong, not the table.
 
 ## CI gate
 
