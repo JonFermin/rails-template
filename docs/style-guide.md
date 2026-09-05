@@ -74,9 +74,8 @@ a second implementation shows up. Abstraction is extracted after the second
 real occurrence, not anticipated before the first.
 
 ### 6. Tests read as documentation
-Minitest (see Testing Philosophy — decided project-wide). Test names describe
-*behavior*, not *implementation* ("archiving a room hides it from members'
-room lists," not "sets archived_at").
+Minitest — see [testing-philosophy.md](testing-philosophy.md) for the
+framework choice and for how test names are written.
 
 Test files mirror the class under test 1:1, matching Rails' own default:
 `app/models/room.rb` → `test/models/room_test.rb`. No custom naming scheme.

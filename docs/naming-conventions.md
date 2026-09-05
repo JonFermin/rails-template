@@ -32,9 +32,11 @@ used, it has failed.
 - Avoid generic technical suffixes that carry no domain meaning:
   `RoomService`, `RoomManager`, `RoomHandler` — "Service"/"Manager"/"Handler"
   describe that *something* happens, not *what*
-- Public method is always **`#call`**, project-wide. This is the de facto
-  Ruby community convention (`SomeService.new(...).call`), unambiguous, and
-  doesn't require inventing a bespoke verb per class.
+- Public method is always **`#call`** — every plain object of this kind, no
+  exceptions. This is the de facto Ruby community convention
+  (`SomeService.new(...).call`), unambiguous, and doesn't require inventing a
+  bespoke verb per class. Jobs are not plain objects and keep ActiveJob's
+  `#perform` (see below).
 
 ## Jobs
 

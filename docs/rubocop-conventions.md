@@ -20,7 +20,7 @@ it for Shopify or Standard without a documented reason in a PR description.
 | `Metrics/ModuleLength` | 100 lines | same as class | |
 | `Metrics/AbcSize` | 17 | 17–20 | Catches methods that are *short but doing too much* (branches + assignments + calls) |
 | `Metrics/CyclomaticComplexity` | 7 | 7 | Hard cap — high complexity is a correctness risk, not just a style one |
-| `Metrics/BlockLength` | 25 | exclude `spec/**/*`, routes, config | Specs and DSLs (routes, RSpec `describe`) legitimately run long |
+| `Metrics/BlockLength` | 25 | exclude `test/**/*`, routes, config | Tests and DSLs (routes, long `setup` blocks) legitimately run long |
 | `Layout/LineLength` | 120 | 120 | Match your widest comfortable split-screen editor width |
 | `Metrics/ParameterLists` | 5 | 4 | More than 4 params — reach for a keyword-args object or form object |
 
@@ -51,7 +51,7 @@ should be a service object or split into named private steps.
 ## Custom conventions worth codifying
 
 - No `rescue => e` swallowing exceptions silently — always re-raise, log, or
-  handle with intent (`Rubocop::Lint/RescueException`, `Lint/SuppressedException`)
+  handle with intent (`Lint/RescueException`, `Lint/SuppressedException`)
 - Ban `update_attribute` (skips validations) in favor of `update`
 - Require frozen string literals (`# frozen_string_literal: true`) project-wide
 - `Rails/SkipsModelValidations` on — force explicit opt-out when bypassing validations
@@ -65,7 +65,6 @@ should be a service object or split into named private steps.
 ```yaml
 require:
   - rubocop-rails-omakase
-  - rubocop-rspec
   - rubocop-performance
 
 AllCops:
