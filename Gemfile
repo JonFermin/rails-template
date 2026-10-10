@@ -40,7 +40,7 @@ gem "image_processing", "~> 1.2"
 gem "pundit", "~> 2.5"
 
 # LLM provider SDK. Only Ai::Completion talks to it; everything else is provider-agnostic (docs/naming-conventions.md)
-gem "anthropic", "~> 1.69"
+gem "anthropic", "~> 1.76"
 # Validates LLM JSON against the same schema we send as the response format, before anything is persisted
 gem "json_schemer", "~> 2.5"
 
